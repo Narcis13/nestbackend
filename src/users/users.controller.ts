@@ -1,4 +1,10 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 
-@Controller('users')
-export class UsersController {}
+@Controller('api/users')
+export class UsersController {
+
+    @Get('toti')
+    totiUtilizatorii(): string {        
+        return 'This action returns all users';
+    }
+}
