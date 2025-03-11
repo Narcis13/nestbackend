@@ -8,9 +8,10 @@ import { ConfigModule } from '@nestjs/config';
 import { FileUploadModule } from './file-upload/file-upload.module';
 import { AuthModule } from './auth/auth.module';
 import { ScheduleModule } from '@nestjs/schedule';
+import { EmailModule } from './email/email.module';
 
 @Module({
-  imports: [UsersModule, DatabaseModule, ProductModule, FileUploadModule, AuthModule, ConfigModule.forRoot(), ScheduleModule.forRoot()],
+  imports: [UsersModule, DatabaseModule, ProductModule, FileUploadModule, AuthModule, ConfigModule.forRoot(), ScheduleModule.forRoot(),EmailModule],
   controllers: [AppController],
   providers: [AppService],
 })
