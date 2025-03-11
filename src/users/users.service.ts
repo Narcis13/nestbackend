@@ -1,11 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { DatabaseService } from '../database/database.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
+import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly databaseService: DatabaseService) {}
+
+  private readonly logger = new Logger(UsersService.name);
 
   async findByUsername(username: string) {
     return this.databaseService.user.findUnique({
@@ -28,5 +31,10 @@ export class UsersService {
       },
     });
     return result;
+  }
+
+  @Cron('15 * * * * *')
+  handleCron() {
+    this.logger.debug('Called when the current second is 15');
   }
 }

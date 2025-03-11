@@ -7,9 +7,10 @@ import { ProductModule } from './product/product.module';
 import { ConfigModule } from '@nestjs/config';
 import { FileUploadModule } from './file-upload/file-upload.module';
 import { AuthModule } from './auth/auth.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
-  imports: [UsersModule, DatabaseModule, ProductModule, FileUploadModule, AuthModule, ConfigModule.forRoot()],
+  imports: [UsersModule, DatabaseModule, ProductModule, FileUploadModule, AuthModule, ConfigModule.forRoot(), ScheduleModule.forRoot()],
   controllers: [AppController],
   providers: [AppService],
 })
